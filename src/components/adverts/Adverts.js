@@ -1,23 +1,15 @@
-
-const adverts = [
-    {
-        name: 'Watchmen Origenes',
-        sale: true,
-        price: 200,
-        tags: ['comic', 'underground'],
-        id: 'lkajsd'
-    },
-    {
-        name: 'Lobezno Inmortal',
-        sale: true,
-        price: 25,
-        tags: ['comic', 'underground', 'marvel', 'xMen'],
-        id: 'lk232l'
-    }
-]
-
+import React from 'react';
+import { getAdverts } from '../../dataService/adverts'
 
 const Adverts = () => {
+
+    const [ adverts, setAdverts ] = React.useState([])
+
+
+    React.useEffect (async () => {
+        getAdverts().then(response => console.log(response));
+    });
+
     return(
         <div className="adverts">
             {adverts.map( advert => (
@@ -29,7 +21,6 @@ const Adverts = () => {
                                     <p className="subtitle is-6">{advert.sale === true ? 'Venta' : 'Compra'}</p>
                                 </div>
                             </div>
-
                             <div className="content">
                             <p className="title is-4">{advert.price} €</p>
                             </div>
