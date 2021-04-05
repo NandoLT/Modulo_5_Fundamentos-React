@@ -1,13 +1,14 @@
 import './App.css';
-import  Adverts from './components/adverts/Adverts';
+import  { Adverts, NewAdvert, AdvertDetail } from './components/adverts';
 import Button from './components/commons/Button';
 
 
 function App() {
   return (
     <div className="App">
-      <Button variant="primary"> Log Out </Button>
       <Adverts />
+      <NewAdvert />
+      <AdvertDetail />
     </div>
   );
 }
