@@ -1,0 +1,18 @@
+
+/** ADVERTS **/
+.adverts-container {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 35px 25px;
+}
+.advert-card {
+    margin: 15px 10px;
+}
+
+/** TAGS **/
+.tag.is-success {
+    margin-right: 10px;;
+}
+.tag.is-success:hover {
+    background-color: rgba(62, 170, 99, 1);
+}

@@ -2,14 +2,3 @@
   text-align: center;
 }
 
-
-/*
-* Adverts Page
-*/
-.tag.is-success {
-  margin-right: 10px;;
-}
-.tag.is-success:hover {
-  background-color: rgba(62, 170, 99, 1);
-}
-

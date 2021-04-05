@@ -1,6 +1,8 @@
 import React from 'react';
 import { getAdverts } from '../../dataService/adverts'
 
+import './Adverts.css';
+
 const Adverts = () => {
 
     const [ adverts, setAdverts ] = React.useState([])
@@ -14,10 +16,14 @@ const Adverts = () => {
     //         setAdverts(response.data));
     // }, []);
 
+    const handleClick = (advert) => {
+        alert(`Construyendo enlace a anuncio ${advert}`);
+    }
+
     return(
-        <div className="adverts">
+        <div className="adverts-container" >
             {adverts.map( advert => (
-                    <div className="card" key={advert.name}>
+                    <div className="card advert-card" key={advert.id} onClick={() => handleClick(advert.name)}>
                         <div className="card-content">
                             <div className="media">
                                 <div className="media-content">
