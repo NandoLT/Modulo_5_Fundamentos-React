@@ -6,9 +6,13 @@ const Adverts = () => {
     const [ adverts, setAdverts ] = React.useState([])
 
 
-    React.useEffect (async () => {
-        getAdverts().then(response => console.log(response));
-    });
+    React.useEffect (() => {
+        getAdverts().then(setAdverts);
+    }, []);
+    // React.useEffect (() => {
+    //     getAdverts().then(response => 
+    //         setAdverts(response.data));
+    // }, []);
 
     return(
         <div className="adverts">
