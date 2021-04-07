@@ -3,10 +3,10 @@ import Layout from '../../layout/Layout';
 
 import './NewAdvert.css';
 
-const NewAdvert = () => {
+const NewAdvert = (props) => {
 
     return(
-        <Layout title="Página de Crear anuncios">
+        <Layout title="Página de Crear anuncios" {...props}>
             <div>
                 New Advert Page
             </div>

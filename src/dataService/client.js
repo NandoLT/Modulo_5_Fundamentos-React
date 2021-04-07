@@ -7,11 +7,15 @@ const client = axios.create({
 
 client.interceptors.response.use(response => response.data);
 
-//TODO Ajustar la validación de token
 const setAuthorizationHeader = token => {
     client.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
 
-setAuthorizationHeader('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMDhlNDlhMC02ZmQ2LTQzZjUtYjY1OC1jNzg0ZTY1NDU0MmIiLCJpYXQiOjE2MTc2NTM1MjMsImV4cCI6MTYxNzczOTkyM30.cKbzaNCxA0qUWAIzYbNw4mvbAqalVq6HiorcaeopXXk');
+export const configureClient = ({accessToken}) => {
+    if(accessToken) {
+        setAuthorizationHeader(accessToken)
+    }
+}
+
 
 export default client;

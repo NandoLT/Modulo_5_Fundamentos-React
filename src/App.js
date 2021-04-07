@@ -16,10 +16,10 @@ function App() {
   return (
     <div className="App">
       {/* <Adverts />
-      <NewAdvert />
-      <AdvertDetail /> 
+      <NewAdvert isLogged={isLogged}/>
+      <AdvertDetail isLogged={isLogged}/> 
       <LoginPage onLogin={handleLogin}/>*/}
-      {isLogged ? <Adverts /> : <LoginPage onLogin={handleLogin} />}
+      {isLogged ? <Adverts isLogged={isLogged} /> : <LoginPage onLogin={handleLogin} />}
     </div>
   );
 }

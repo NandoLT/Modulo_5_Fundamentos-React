@@ -4,7 +4,7 @@ import Layout from '../../layout/Layout';
 
 import './Adverts.css';
 
-const Adverts = () => {
+const Adverts = (props) => {
 
     const [ adverts, setAdverts ] = React.useState([])
 
@@ -22,7 +22,7 @@ const Adverts = () => {
     }
 
     return(
-        <Layout title="Página de anuncios">
+        <Layout title="Página de anuncios" {...props}>
             <div className="adverts-container" >
                 {adverts.map( advert => (
                         <div className="card advert-card" key={advert.id} onClick={() => handleClick(advert.name)}>
