@@ -5,21 +5,25 @@ import Button from './components/commons/Button';
 
 import './App.css';
 
-function App() {
+function App({isInitiallyLogged}) {
 
-  const [isLogged, setIsLogged] = React.useState(false);
+  const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
 
   const handleLogin = () => {
     setIsLogged(true)
   }
 
+  const handleLogout = () => {
+    setIsLogged(false)
+  }
+
   return (
     <div className="App">
       {/* <Adverts />
-      <NewAdvert isLogged={isLogged}/>
-      <AdvertDetail isLogged={isLogged}/> 
+      <NewAdvert isLogged={isLogged} onLogout={handleLogout} />
+      <AdvertDetail isLogged={isLogged}onLogout={handleLogout} /> 
       <LoginPage onLogin={handleLogin}/>*/}
-      {isLogged ? <Adverts isLogged={isLogged} /> : <LoginPage onLogin={handleLogin} />}
+      {isLogged ? <Adverts isLogged={isLogged} onLogout={handleLogout} /> : <LoginPage onLogin={handleLogin} />}
     </div>
   );
 }

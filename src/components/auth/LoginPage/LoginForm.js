@@ -1,9 +1,11 @@
 import React from 'react';
 
-import Button from '../../commons/Button';
+import T from 'prop-types';
+import {Button} from '../../commons/Button';
 import FormField from '../../commons/FormField';
 
 import './LoginForm.css';
+import LoginPage from './LoginPage';
 
 function LoginForm({onSubmit, isLoading}) {
 
@@ -53,6 +55,11 @@ function LoginForm({onSubmit, isLoading}) {
             </Button>
         </form>
     );
+}
+
+LoginForm.propTypes = {
+    onSubmit: T.func.isRequired,
+    isLoading: T.bool.isRequired,
 }
 
 export default LoginForm;

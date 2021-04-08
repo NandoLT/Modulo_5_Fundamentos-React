@@ -1,11 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
-import Button from '../commons/Button';
+import {Button} from '../commons/Button';
 
 import { ReactComponent as Icon } from '../../assets/twitter.svg';
 import './Header.css';
+import AuthButton from '../auth/AuthButton/AuthButton';
 
-const Header = ({ className, isLogged, ...props }) => {
+const Header = ({ className, isLogged, onLogout, ...props }) => {
+
     return (
         <header className={classNames('header', className)} {...props}>
         {/* <Link to="/"> */}
@@ -22,24 +24,11 @@ const Header = ({ className, isLogged, ...props }) => {
             >
                 Tweet
             </Button>
-            { isLogged ? (
-                <Button 
-                    className="header-button"
-                    // onClick={() => logout().then(onLogout)}
-                >
-                    Log out
-                </Button>
-            ) : (
-            <Button 
-                // as={Link} 
-                to="/login"  
+            <AuthButton
                 className="header-button"
-            >
-                Log in
-            </Button>
-            )
-
-            }
+                isLogged={isLogged}
+                onLogout={onLogout}
+            />
             </nav>
         </header>
     );

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const accentColor = 'rgb(29,  161, 242)';
 
-const Button = styled.button`
+export const Button = styled.button`
     align-items: center;
     background-color: ${props =>
         props.variant === 'primary' ? accentColor : 'white'};
@@ -33,4 +33,3 @@ const Button = styled.button`
 }
 `;
 
-export default Button;
