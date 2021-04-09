@@ -1,5 +1,5 @@
 import React from 'react';
-import { Adverts, NewAdvert, AdvertDetail } from './components/adverts';
+import { AdvertsPage, NewAdvert, AdvertDetail } from './components/adverts';
 import LoginPage from  './components/auth/LoginPage/LoginPage';
 import Button from './components/commons/Button';
 
@@ -23,7 +23,7 @@ function App({isInitiallyLogged}) {
       <NewAdvert isLogged={isLogged} onLogout={handleLogout} />
       <AdvertDetail isLogged={isLogged}onLogout={handleLogout} /> 
       <LoginPage onLogin={handleLogin}/>*/}
-      {isLogged ? <Adverts isLogged={isLogged} onLogout={handleLogout} /> : <LoginPage onLogin={handleLogin} />}
+      {isLogged ? <AdvertsPage isLogged={isLogged} onLogout={handleLogout} /> : <LoginPage onLogin={handleLogin} />}
     </div>
   );
 }

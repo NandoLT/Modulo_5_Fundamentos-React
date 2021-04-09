@@ -1,1 +1,1 @@
-export {default}  from './Adverts';
+export {default} from './AdvertsPage';
