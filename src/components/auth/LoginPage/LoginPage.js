@@ -8,15 +8,21 @@ import './LoginPage.css';
 function LoginPage({onLogin}) {
 
     const [error, setError] = React.useState(null);
-
     const [isLoading, setIsLoading] = React.useState(false);
+    const isLogged = React.useRef(false);
+
+    React.useEffect(() => {
+        if(isLogged.current) {
+            onLogin()
+        }
+    }, [isLogged.current, onLogin])
 
     const handleSubmit = async (credentials) => {
+        setError(null);
+        setIsLoading(true);
         try {
-            setError(null);
-            setIsLoading(true);
             await login(credentials);
-            onLogin();
+            isLogged.current = true;
         } catch (error) {
             setError(error);
         }finally{
