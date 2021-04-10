@@ -5,7 +5,7 @@ import Loader from '../../commons/Loader';
 
 import './LoginPage.css';
 
-function LoginPage({onLogin}) {
+function LoginPage({onLogin, history}) {
 
     const [error, setError] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(false);
@@ -13,7 +13,8 @@ function LoginPage({onLogin}) {
 
     React.useEffect(() => {
         if(isLogged.current) {
-            onLogin()
+            history.push('/');
+            onLogin();
         }
     }, [isLogged.current, onLogin])
 

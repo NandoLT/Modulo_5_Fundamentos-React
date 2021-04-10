@@ -24,9 +24,10 @@ function App({isInitiallyLogged}) {
       <Switch>
         <Route path="/advert/:advertId" component={AdvertDetail}/>
         <Route path="/advert" component={NewAdvert}/>
-        <Route path="/login">{() => isLogged ? 
-          <Redirect to="/" />:
-          <LoginPage onLogin={handleLogin} />}
+        <Route path="/login">
+        {({history}) => (
+          <LoginPage onLogin={handleLogin} history={history}/>
+        )}
         </Route>
         <Route exact path="/"><AdvertsPage isLogged={isLogged} onLogout={handleLogout} /></Route>
         <Route path="/404" component={NotFound}/>
