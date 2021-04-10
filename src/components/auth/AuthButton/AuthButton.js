@@ -6,6 +6,7 @@ import {logout} from '../../../dataService/auth';
 const AuthButton = ({ className, isLogged, onLogout}) => {
     const handleLogout = () => {
         logout().then(onLogout);
+        
     };
 
     const props = isLogged ?
