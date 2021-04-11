@@ -4,7 +4,6 @@ import LoginPage from  './components/auth/LoginPage/LoginPage';
 import NotFound from './components/commons/NotFound';
 import { Switch, Route, Redirect } from 'react-router';
 import PrivateRoute from './components/auth/PrivateRoute/PrivateRoute';
-// import Button from './components/commons/Button';
 
 import './App.css';
 
@@ -34,28 +33,25 @@ function App({isInitiallyLogged}) {
           component={NewAdvert}
         />
         <Route path="/login">
-        {({history}) => (
+        {({history, location}) => (
           <LoginPage onLogin={handleLogin} history={history}/>
         )}
         </Route>
-        <Route exact path="/"><AdvertsPage isLogged={isLogged} onLogout={handleLogout} /></Route>
-        {/* <Route exact path="/">
-          {({history}) => (
-            <AdvertsPage isLogged={isLogged} onLogout={handleLogout} history={history} />
+        <Route exact path="/">
+          {({history, location}) => (
+            <AdvertsPage 
+              isLogged={isLogged} 
+              onLogout={handleLogout} 
+              history={history} 
+              location={location}
+            />
           )}
-        </Route> */}
+        </Route>
         <Route path="/404" component={NotFound}/>
         <Route>
           <Redirect to="/404" />
         </Route>
       </Switch>
-      {/* <Adverts />
-      <NewAdvert isLogged={isLogged} onLogout={handleLogout} />
-      <AdvertDetail isLogged={isLogged}onLogout={handleLogout} /> 
-      <LoginPage onLogin={handleLogin}/>*/}
-      {/* {isLogged ? 
-        <AdvertsPage isLogged={isLogged} onLogout={handleLogout} /> : 
-        <LoginPage onLogin={handleLogin} />} */}
     </div>
   );
 }

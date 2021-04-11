@@ -6,7 +6,7 @@ export const Button = styled.button`
     align-items: center;
     background-color: ${props =>
         props.variant === 'primary' ? accentColor : 'white'};
-    border-radius: 9999px;
+    border-radius: 10px;
     border-style: solid;
     border-width: 1px;
     border-color: ${accentColor};

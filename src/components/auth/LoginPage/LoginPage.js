@@ -5,7 +5,7 @@ import Loader from '../../commons/Loader';
 
 import './LoginPage.css';
 
-function LoginPage({onLogin, history}) {
+function LoginPage({onLogin, history, location}) {
 
     const [error, setError] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(false);

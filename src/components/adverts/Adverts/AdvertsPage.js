@@ -13,7 +13,7 @@ const EmptyList = () => {
             <p>Please be the first...</p>
             <Button
             // as={Link}
-            // to="/tweet"
+            // to="/advert"
                 variant="primary"
             >
                 New Advert
@@ -22,19 +22,20 @@ const EmptyList = () => {
     ) 
 };
 
-const AdvertsPage = ({...props }) => {
-
-    const [ adverts, setAdverts ] = React.useState([]);
+const AdvertsPage = ({history, location, ...props }) => {
+    const initialState = []
+    const [ adverts, setAdverts ] = React.useState(initialState);
 
     React.useEffect (() => {
         getAdverts().then(setAdverts);
-    }, []);
+        console.log('use effect');
+    },[]);
+
+    
 
     return (
         <Layout title="Página de anuncios" {...props}>
-            {/* <div className={classnames(scopedStyles.tweetsPage, className)}> */}
-                {adverts.length ? <AdvertsList adverts={adverts} /> : <EmptyList />}
-            {/* </div> */}
+            {adverts.length ? <AdvertsList adverts={adverts} history={history}/> : <EmptyList />}
         </Layout>
     );
 };

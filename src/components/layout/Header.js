@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 import {Button} from '../commons/Button';
 
-import { ReactComponent as Icon } from '../../assets/twitter.svg';
 import './Header.css';
 import AuthButton from '../auth/AuthButton/AuthButton';
 
@@ -13,10 +12,18 @@ const Header = ({ className, isLogged, onLogout, ...props }) => {
         <header className={classNames('header', className)} {...props}>
         <Link to="/">
             <div className="header-logo">
-                <Icon width="32" header="32" />
+                NODEPOP
             </div>
         </Link>
             <nav className="header-nav">
+            <Button
+                as={Link}
+                to="/"
+                variant="primary"
+                className="header-button"
+            >
+                Home
+            </Button>
             <Button
                 as={Link}
                 to="/advert"

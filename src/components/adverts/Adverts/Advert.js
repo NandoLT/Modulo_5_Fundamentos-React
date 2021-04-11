@@ -1,19 +1,8 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
-// import T from 'prop-types';
 
-const Advert = ({advert}) => {
-
-    const handleClick = (productName, productId) => {
-        alert(`Construyendo un enlace al detalle para ${productName}`);
-        // console.log(productId);
-        // console.log(`/advert/${productId}`);
-        // <Redirect to={`/advert/${productId}`} />;
-    };
-
+const Advert = ({advert, history, onClick}) => {
     return (
-        // {adverts.map( advert => (
-            <div className="card advert-card" key={advert.id} onClick={() => handleClick(advert.name, advert.id)}>
+            <div className="card advert-card" key={advert.id} onClick={onClick}>
                 <div className="card-content">
                     <div className="media">
                         <div className="media-content">
@@ -31,7 +20,6 @@ const Advert = ({advert}) => {
                     </div>
                 </div>
             </div>
-    // ))};
     );
 }
 

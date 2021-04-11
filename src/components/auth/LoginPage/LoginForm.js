@@ -1,11 +1,9 @@
 import React from 'react';
-
 import T from 'prop-types';
 import {Button} from '../../commons/Button';
 import FormField from '../../commons/FormField';
 
 import './LoginForm.css';
-import LoginPage from './LoginPage';
 
 function LoginForm({onSubmit, isLoading}) {
 
