@@ -2,15 +2,29 @@ import React from 'react';
 import T from 'prop-types';
 import {Button} from '../../commons/Button';
 import FormField from '../../commons/FormField';
+import storage from '../../../utils/storage';
+
 
 import './LoginForm.css';
 
-function LoginForm({onSubmit, isLoading}) {
+const userEmail = storage.get('email');
+const userPassword = storage.get('password');
 
+function LoginForm({onSubmit, isLoading}) {
     const [credentials, setCredentials] = React.useState({
         email:'',
         password:''
     });
+    const [remember, setRemember] = React.useState(false)
+
+    React.useEffect(() => {     
+        if(userEmail && userPassword) {
+            const savedCredentials = {email:userEmail, password:userPassword};
+            setCredentials(savedCredentials);
+        } else {
+            setCredentials({email:'', password:''});
+        }
+    }, [])
 
     const handleChangeCredentials = event => {
         setCredentials(oldCredentials => ({
@@ -19,9 +33,13 @@ function LoginForm({onSubmit, isLoading}) {
         }));
     };
 
+    const handleRemember = () => {
+        setRemember(!remember);
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        onSubmit(credentials);
+        onSubmit(credentials, remember);
     }
 
     const {email, password} = credentials
@@ -51,6 +69,13 @@ function LoginForm({onSubmit, isLoading}) {
             >
             Log in
             </Button>
+            <FormField
+                type="checkbox"
+                name="remember"
+                label="Remember Me"
+                className="loginForm-remember"
+                onChange={handleRemember}
+            />
         </form>
     );
 }

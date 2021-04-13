@@ -13,16 +13,17 @@ function LoginPage({onLogin, history, location}) {
 
     React.useEffect(() => {
         if(isLogged.current) {
-            history.push('/');
             onLogin();
+            history.push('/');
         }
     }, [isLogged.current, onLogin])
 
-    const handleSubmit = async (credentials) => {
+    const handleSubmit = async (credentials, remember) => {
+        console.log(credentials);
         setError(null);
         setIsLoading(true);
         try {
-            await login(credentials);
+            await login(credentials, remember);
             isLogged.current = true;
         } catch (error) {
             setError(error);

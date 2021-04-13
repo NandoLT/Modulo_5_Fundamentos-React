@@ -3,6 +3,7 @@ import {getAdverts} from '../../../dataService/adverts';
 import Layout from '../../layout/Layout';
 import AdvertsList from './AdvertsList';
 import {Button} from '../../commons/Button';
+import {Link} from 'react-router-dom';
 
 import './Adverts.css';
 
@@ -12,8 +13,8 @@ const EmptyList = () => {
             <p>We Need Adverts to get Money!</p>
             <p>Please be the first...</p>
             <Button
-            // as={Link}
-            // to="/advert"
+            as={Link}
+            to="/advert"
                 variant="primary"
             >
                 New Advert
@@ -28,7 +29,6 @@ const AdvertsPage = ({history, location, ...props }) => {
 
     React.useEffect (() => {
         getAdverts().then(setAdverts);
-        console.log('use effect');
     },[]);
 
     

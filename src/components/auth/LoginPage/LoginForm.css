@@ -6,3 +6,16 @@
     margin-top: 10px;
     width: 100%;
 }
+
+
+.loginForm-remember label {
+    border: none;
+    background-color: transparent;
+    flex-direction: row;
+}
+.loginForm-remember span {
+    /* flex-direction: row;    */
+}
+.loginForm-remember input {
+    width: auto;   
+}

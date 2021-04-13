@@ -22,22 +22,56 @@ function App({isInitiallyLogged}) {
   return (
     <div className="App">
       <Switch>
-        <PrivateRoute 
+        {/* <PrivateRoute 
           isLogged={isLogged}
+          onLogout={handleLogout} 
           path="/advert/:advertId" 
           component={AdvertDetail}
-        />
+        /> */}
         <PrivateRoute 
+          isLogged={isLogged}
+          onLogout={handleLogout} 
+          path="/advert/:advertId" 
+        >
+        {({history, match}) => (
+          <AdvertDetail
+            isLogged={isLogged}
+            onLogout={handleLogout}
+            history={history}
+            match={match}
+          />
+        )}
+        </PrivateRoute>
+
+        {/* <PrivateRoute 
           isLogged={isLogged} 
           path="/advert" 
           component={NewAdvert}
-        />
+        /> */}
+        <PrivateRoute 
+          isLogged={isLogged}
+          onLogout={handleLogout} 
+          path="/advert" 
+        >
+        {({history, match}) => (
+          <NewAdvert
+            isLogged={isLogged}
+            onLogout={handleLogout}
+            history={history}
+            match={match}
+          />
+        )}
+        </PrivateRoute>
         <Route path="/login">
         {({history, location}) => (
-          <LoginPage onLogin={handleLogin} history={history}/>
+          <LoginPage 
+            onLogin={handleLogin} 
+            history={history}/>
         )}
         </Route>
-        <Route exact path="/">
+        <PrivateRoute exact path="/"
+          isLogged={isLogged}
+        >
           {({history, location}) => (
             <AdvertsPage 
               isLogged={isLogged} 
@@ -46,7 +80,7 @@ function App({isInitiallyLogged}) {
               location={location}
             />
           )}
-        </Route>
+        </PrivateRoute>
         <Route path="/404" component={NotFound}/>
         <Route>
           <Redirect to="/404" />
