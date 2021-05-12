@@ -1,14 +1,27 @@
 import React from 'react';
 import CreateAdvertForm from './CreateAdvertForm';
 import Layout from '../../layout/Layout';
+import {createAdvert} from '../../../dataService/adverts';
 
 import './NewAdvert.css';
+import { getNodeText } from '@testing-library/dom';
 
-const NewAdvert = (props) => {
+const NewAdvert = ({history, ...props}) => {
+    console.log('PROPS NEW ADVERT', props);
+    const handleSubmit = async (advertFields) => {
+        const advertData = new FormData();
+        Object.keys(advertFields).forEach(key => {
+            advertFields[key] !== null && advertData.append(key, advertFields[key]);
+        });
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('Envío de formulario');
+        try {
+            const advertResponse = await createAdvert(advertData);
+            console.log(advertResponse);
+            const advertID = advertResponse.id;
+            history.push(`/advert/${advertID}`);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return(

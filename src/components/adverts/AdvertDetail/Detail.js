@@ -1,5 +1,5 @@
 import React from "react";
-
+import no_image from '../../../assets/no-image.png';
 
 const Detail = ({advert, onConfirm}) => {
 
@@ -11,7 +11,7 @@ const Detail = ({advert, onConfirm}) => {
                         {advert.photo ? 
                             <img src={`http://localhost:3001${advert.photo}`} />
                             :
-                            <img src="https://bulma.io/images/placeholders/256x256.png" /> 
+                            <img src={no_image} /> 
                             }
                     </figure>
                 </div>
