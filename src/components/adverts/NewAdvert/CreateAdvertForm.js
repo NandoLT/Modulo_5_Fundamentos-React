@@ -2,16 +2,18 @@ import React from 'react';
 import {Button} from '../../commons/Button';
 import InputsTags from './InputsTags';
 
+
 import '../../commons/FormField.css';
 
-const CreateAdvertForm = ({onSubmit}) => {
-    const [advertFields, setAdvertFields] = React.useState({
+const CreateAdvertForm = ({onSubmit, ...props}) => {
+    const initialState = {
         name:'',
         price:0,
-        sale:false,
-        tags:['motor'],
+        sale:null,
+        tags:[],
         photo:null,
-    });
+    }
+    const [advertFields, setAdvertFields] = React.useState(initialState);
 
     const {name, price, sale, tags, photo} = advertFields;
 
@@ -29,40 +31,82 @@ const CreateAdvertForm = ({onSubmit}) => {
             return newValues;
         });
     };
-    
-    const handleChangeClon = event => {
-        console.log(event);
-        console.log(event.target.files[0]);
+
+    const handleChangeCheckbox = (selectedTags) => {
+        setAdvertFields(oldValues => {
+            const newValues = {
+                ...oldValues,
+                tags: selectedTags,
+            };
+            // console.log('setTAGS', advertFields)
+            return newValues;
+        });
+        
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(advertFields)
+        onSubmit(advertFields);
+    };
+
+    const handleReset = (event) => {
+        event.preventDefault();
+        setAdvertFields(initialState)
         onSubmit(advertFields);
     };
 
     return (
-        <form className="loginForm" onSubmit={handleSubmit}>
+        <form className="loginForm" onSubmit={handleSubmit} onReset={handleReset}>
             <label className="formField-label"> Name
                 <input className="formField-input" type="text" name="name" value={name} onChange={handleChange}/>
             </label> 
-            <label className="formField-label"> Price
+            <label className="formField-label">
+            {!props.textButton ? 
+                'Price' : 'Price Lower Than:'
+            }
                 <input className="formField-input" type="number" name="price" value={price} onChange={handleChange}/>
             </label>
-            <InputsTags multiple name="tags" value={tags} onChange={handleChange}/>
+            <InputsTags className="container-tags" multiple name="tags" onChange={handleChangeCheckbox}/>
             <label className="formField-label" style={{display:'flex', flexDirection:'row', justifyContent:'space-around', padding:'10px 0px'}}> 
                 <label style={{paddingRight: '15px'}}><input type="radio" value="true" name="sale" onChange={handleChange}/><span>Vender</span></label>
                 <label style={{paddingRight: '15px'}}><input type="radio" value="false" name="sale" onChange={handleChange}/><span>Comprar</span></label>
             </label>
-            <input name="photo" type="file" onChange={handleChange}/>
-            <Button
-                type="submit"
-                className="loginForm-submit"
-                variant="primary"
-                // disabled={isLoading || !username || !password}
-                disabled={ !name || !price || !sale || !tags }
-            >
-            Create
-            </Button>
+            {!props.textButton ? 
+                <input name="photo" type="file" onChange={handleChange}/> : 
+                null
+            }
+            {!props.textButton ?
+                <Button
+                    type="submit"
+                    className="loginForm-submit"
+                    variant="primary"
+                    
+                    disabled={ !name || !price || !sale || !tags }
+                >
+                    Create
+                </Button> : 
+                <div>
+                <Button
+                    type="submit"
+                    className="loginForm-submit"
+                    variant="primary"
+                    
+                    disabled={ false}
+                >
+                {props.textButton}
+                </Button>
+                <Button
+                    type="reset"
+                    className="loginForm-submit"
+                    variant="primary"
+                    
+                    disabled={ false}
+                >
+                Reset
+                </Button></div>
+            }
+
         </form>
     )
 }

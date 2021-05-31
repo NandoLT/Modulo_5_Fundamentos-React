@@ -9,7 +9,7 @@ const Detail = ({advert, onConfirm}) => {
                 <div className="column is-5">
                     <figure className="image is-4by3">
                         {advert.photo ? 
-                            <img src={`http://localhost:3001${advert.photo}`} />
+                            <img src={`${process.env.REACT_APP_API_BASE_URL}${advert.photo}`} />
                             :
                             <img src={no_image} /> 
                             }

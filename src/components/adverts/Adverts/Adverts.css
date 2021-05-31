@@ -1,7 +1,7 @@
 
 /** ADVERTS **/
-.adverts-container {
-    display: flex;
+.adverts-list {
+    display: grid;
     flex-flow: row wrap;
     padding: 35px 25px;
 }
@@ -9,6 +9,14 @@
     margin: 15px 10px;
 }
 
+.adverts-continer .table.table-striped{
+    width: 100%;
+}
+
+.item-list:hover {
+    background-color: rgba(106, 209, 250, 0.705);
+    cursor: pointer;
+}
 /** TAGS **/
 .tag.is-success {
     margin-right: 10px;;

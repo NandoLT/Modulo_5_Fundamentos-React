@@ -17,7 +17,24 @@ const renderAdvert = history => advert => (
 
 
 const AdvertsList = ({adverts, history}) => {
-    return <div className="adverts-container">{adverts.map(renderAdvert(history))}</div>;
+
+    return (
+        <div className="adverts-list">
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Tags</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {adverts.map(renderAdvert(history))}
+                </tbody>
+            </table>
+        </div>
+        )
 }
 
 export default AdvertsList;

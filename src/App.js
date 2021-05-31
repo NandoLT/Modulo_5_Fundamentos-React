@@ -29,6 +29,13 @@ function App({isInitiallyLogged}) {
           component={AdvertDetail}
         /> */}
         <PrivateRoute 
+          exact path="/"
+          isLogged={isLogged}
+          onLogout={handleLogout}  
+        >
+          <Redirect to="/adverts"/>
+        </PrivateRoute>
+        <PrivateRoute 
           isLogged={isLogged}
           onLogout={handleLogout} 
           path="/advert/:advertId" 
@@ -51,7 +58,7 @@ function App({isInitiallyLogged}) {
         <PrivateRoute 
           isLogged={isLogged}
           onLogout={handleLogout} 
-          path="/advert" 
+          path="/new-advert" 
         >
         {({history, match}) => (
           <NewAdvert
@@ -69,7 +76,7 @@ function App({isInitiallyLogged}) {
             history={history}/>
         )}
         </Route>
-        <PrivateRoute exact path="/"
+        <PrivateRoute exact path="/adverts"
           isLogged={isLogged}
         >
           {({history, location}) => (

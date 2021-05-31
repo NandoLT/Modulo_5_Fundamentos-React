@@ -4,7 +4,6 @@ import Layout from '../../layout/Layout';
 import {createAdvert} from '../../../dataService/adverts';
 
 import './NewAdvert.css';
-import { getNodeText } from '@testing-library/dom';
 
 const NewAdvert = ({history, ...props}) => {
     console.log('PROPS NEW ADVERT', props);

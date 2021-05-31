@@ -18,7 +18,7 @@ const Header = ({ className, isLogged, onLogout, ...props }) => {
             <nav className="header-nav">
             <Button
                 as={Link}
-                to="/"
+                to="/adverts"
                 variant="primary"
                 className="header-button"
             >
@@ -26,7 +26,7 @@ const Header = ({ className, isLogged, onLogout, ...props }) => {
             </Button>
             <Button
                 as={Link}
-                to="/advert"
+                to="/new-advert"
                 variant="primary"
                 className="header-button"
             >

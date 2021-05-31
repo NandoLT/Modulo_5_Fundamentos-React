@@ -10,7 +10,7 @@ const NotFound = () => {
             <span className="four"><span className="screen-reader-text">4</span></span>
         </section>
         <div className="link-container">
-            <a target="_blank" href="https://www.silocreativo.com/en/creative-examples-404-error-css/" className="more-link">Visit the original article</a>
+            <a referrerPolicy="no-referrer" href="/" className="more-link">Go Home</a>
         </div>
         </>
     )
