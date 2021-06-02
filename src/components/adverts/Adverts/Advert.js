@@ -22,7 +22,7 @@ const Advert = ({advert, history, onClick}) => {
             // </div>
             <tr key={advert.id} onClick={onClick} className="item-list">
                 <th>{advert.name}</th>
-                <th>{advert.sale === true ? 'Venta' : 'Compra'}</th>
+                <th>{advert.sale === true ? 'Sell' : 'Buy'}</th>
                 <th>{advert.price} €</th>
                 <th>
                 {advert.tags.map(tag => (

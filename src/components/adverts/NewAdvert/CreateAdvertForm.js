@@ -46,14 +46,13 @@ const CreateAdvertForm = ({onSubmit, ...props}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(advertFields)
+        // console.log(advertFields)
         onSubmit(advertFields);
     };
-
+    
     const handleReset = (event) => {
         event.preventDefault();
-        setAdvertFields(initialState)
-        onSubmit(advertFields);
+        onSubmit(initialState);
     };
 
     return (
@@ -69,8 +68,8 @@ const CreateAdvertForm = ({onSubmit, ...props}) => {
             </label>
             <InputsTags className="container-tags" multiple name="tags" onChange={handleChangeCheckbox}/>
             <label className="formField-label" style={{display:'flex', flexDirection:'row', justifyContent:'space-around', padding:'10px 0px'}}> 
-                <label style={{paddingRight: '15px'}}><input type="radio" value="true" name="sale" onChange={handleChange}/><span>Vender</span></label>
-                <label style={{paddingRight: '15px'}}><input type="radio" value="false" name="sale" onChange={handleChange}/><span>Comprar</span></label>
+                <label style={{paddingRight: '15px'}}><input type="radio" value="true" name="sale" onChange={handleChange}/><span>Sell</span></label>
+                <label style={{paddingRight: '15px'}}><input type="radio" value="false" name="sale" onChange={handleChange}/><span>Buy</span></label>
             </label>
             {!props.textButton ? 
                 <input name="photo" type="file" onChange={handleChange}/> : 
@@ -81,7 +80,6 @@ const CreateAdvertForm = ({onSubmit, ...props}) => {
                     type="submit"
                     className="loginForm-submit"
                     variant="primary"
-                    
                     disabled={ !name || !price || !sale || !tags }
                 >
                     Create
@@ -91,17 +89,15 @@ const CreateAdvertForm = ({onSubmit, ...props}) => {
                     type="submit"
                     className="loginForm-submit"
                     variant="primary"
-                    
-                    disabled={ false}
+                    disabled={false}
                 >
                 {props.textButton}
                 </Button>
                 <Button
                     type="reset"
                     className="loginForm-submit"
-                    variant="primary"
-                    
-                    disabled={ false}
+                    // variant="primary"
+                    disabled={false}
                 >
                 Reset
                 </Button></div>
