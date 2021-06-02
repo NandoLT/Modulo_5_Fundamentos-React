@@ -19,7 +19,6 @@ function LoginPage({onLogin, history, location}) {
     }, [isLogged.current, onLogin])
 
     const handleSubmit = async (credentials, remember) => {
-        console.log(credentials);
         setError(null);
         setIsLoading(true);
         try {

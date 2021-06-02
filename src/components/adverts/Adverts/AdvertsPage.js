@@ -34,23 +34,10 @@ const AdvertsPage = ({history, location, ...props }) => {
             .then(setAdverts)
     },[]);
 
-    // const tagsChecker = (advertsTags, filterTags) => {
-    //     let valueTag = true;
-    //     console.log('INICIALIZA A TRUE VALUETAG', valueTag)
-    //     advertsTags.forEach( tag => {
-    //         console.log('Booleano de TAG', filterTags.includes(tag))
-    //         valueTag = valueTag * filterTags.includes(tag);
-    //         console.log('valor operacion tag', valueTag)
-    //     });
-    //     return valueTag
-    // }
-
     const tagsChecker = (tags, filters) => filters.every( item => tags.includes(item))
-    // TODO: Hacer las querys para ejecutar llamada al backend cada vez que uses los filtros más boton reset llamada limpia
     const handleFilter = (dataFilters) => { 
 
         const productsFiltered = adverts.filter( advert => {
-            console.log(advert)
                 if(
                     (((dataFilters.name !== "") && (advert.name === dataFilters.name)) || dataFilters.name === "" )
                     &&
@@ -58,17 +45,13 @@ const AdvertsPage = ({history, location, ...props }) => {
                     &&
                     (((dataFilters.sale !== null) && (advert.sale ===  JSON.parse(dataFilters.sale))) || dataFilters.sale === null )
                     &&
-                    // (((dataFilters.tags.length !== 0) && (tagsChecker(advert.tags, dataFilters.tags))) || dataFilters.tags.length === 0)
                     (((dataFilters.tags.length !== 0) && (tagsChecker(advert.tags, dataFilters.tags)) || dataFilters.tags.length === 0))
                 )
                     {
                         return advert
                     }   
         });
-            console.log('PRODUCST FILTEREDS', productsFiltered);
-            // productsFiltered.length !== 0 ? setAdvertFiltereds(productsFiltered) : setAdvertFiltereds("No Adverts")
             setAdvertFiltereds(productsFiltered)
-            
     }
 
     return (

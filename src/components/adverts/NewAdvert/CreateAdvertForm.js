@@ -38,7 +38,6 @@ const CreateAdvertForm = ({onSubmit, ...props}) => {
                 ...oldValues,
                 tags: selectedTags,
             };
-            // console.log('setTAGS', advertFields)
             return newValues;
         });
         
@@ -46,7 +45,6 @@ const CreateAdvertForm = ({onSubmit, ...props}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // console.log(advertFields)
         onSubmit(advertFields);
     };
     

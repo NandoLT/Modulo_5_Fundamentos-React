@@ -25,7 +25,6 @@ const FiltersNoResults = () => {
 };
 
 const AdvertsList = ({adverts, filtersExist, history}) => {
-    console.log('BOOLEANO ANUNCIOS', (filtersExist && adverts) )
     
         if ((filtersExist !== false && adverts) || adverts){
             return (

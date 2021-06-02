@@ -19,7 +19,6 @@ const AdvertDetail = ({history,...props}) => {
     const advertId = match.params.advertId 
 
     const handleDelete = () => {
-        console.log(advertId);
         setIsLoading(true);
         deleteAdvert(advertId)
             .then(
